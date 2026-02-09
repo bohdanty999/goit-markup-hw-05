@@ -509,8 +509,9 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  opacity: 0;
+  /* opacity: 0;
   pointer-events: none;
+  visibility: hidden; */
 }
 
 .modal {
@@ -542,11 +543,13 @@ img {
   transition-property: background-color;
 }
 
-.btn-close:hover {
+.btn-close:hover,
+.btn-close:focus {
   background-color: #404bbf;
 }
 
-.btn-close:hover .icon-close {
+.btn-close:hover .icon-close,
+.btn-close:focus .icon-close {
   fill: #fff;
 }
 
@@ -589,7 +592,7 @@ img {
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
   margin-bottom: 8px;
-  padding: 8px 32px;
+  padding: 8px 38px;
   color: #2e2f42;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -627,14 +630,22 @@ textarea:active {
   border-color: #4d5ae5;
 }
 
-.modal-icons {
+.field-wrapper-inner {
   position: relative;
-  left: 16px;
-  top: -38px;
+}
+
+.modal-icons {
+  position: absolute;
+  right: 90%;
+  transform: translateY(50%);
   fill: #2e2f42;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: fill;
+}
+
+.input-field:focus + .modal-icons {
+  fill: #4d5ae5;
 }
 
 .custom-checkbox {
@@ -673,11 +684,6 @@ textarea:active {
 .legacy-checkbox:checked + .checkbox-label .checked-icon,
 .legacy-checkbox:focus + .checkbox-label .checked-icon {
   fill: #f4f4fd;
-}
-
-.legacy-checkbox {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .checkbox-link {
@@ -723,6 +729,7 @@ textarea:active {
 .is-open {
   opacity: 1;
   pointer-events: auto;
+  visibility: visible;
 }
 
 /* #endregion backdrop */
