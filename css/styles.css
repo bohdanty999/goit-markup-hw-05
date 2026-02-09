@@ -509,6 +509,8 @@ img {
   position: fixed;
   top: 0;
   left: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .modal {
@@ -582,19 +584,31 @@ img {
   margin-bottom: 4px;
 }
 
-.input-field,
-textarea {
+.input-field {
+  width: 100%;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  padding: 8px 32px;
+  color: #2e2f42;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: border-color;
+}
+
+.textarea {
   resize: none;
   width: 100%;
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
   margin-bottom: 8px;
   padding: 8px 16px;
-}
-
-.textarea {
   height: 120px;
   margin-bottom: 16px;
+  color: #2e2f42;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: border-color;
 }
 
 .textarea::placeholder {
@@ -615,10 +629,31 @@ textarea:active {
 
 .modal-icons {
   position: relative;
-  top: -38px;
   left: 16px;
+  top: -38px;
+  fill: #2e2f42;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: fill;
 }
-.checkbox-label {
+
+.custom-checkbox {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: background-color, fill;
+  margin-right: 8px;
+}
+
+.checked-icon {
+  fill: none;
 }
 
 .checkbox-container {
@@ -629,10 +664,31 @@ textarea:active {
   letter-spacing: 0.04em;
   margin-bottom: 24px;
 }
+
+.legacy-checkbox:checked + .checkbox-label .custom-checkbox,
+.legacy-checkbox:focus + .checkbox-label .custom-checkbox {
+  background-color: #404bbf;
+}
+
+.legacy-checkbox:checked + .checkbox-label .checked-icon,
+.legacy-checkbox:focus + .checkbox-label .checked-icon {
+  fill: #f4f4fd;
+}
+
+.legacy-checkbox {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .checkbox-link {
   text-decoration: underline;
   color: #4d5ae5;
   line-height: 1.33;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: baseline;
 }
 
 .modal-btn {
@@ -662,6 +718,11 @@ textarea:active {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.is-open {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* #endregion backdrop */
