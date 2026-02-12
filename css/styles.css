@@ -591,12 +591,16 @@ img {
   width: 100%;
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
-  margin-bottom: 8px;
+
   padding: 8px 38px;
   color: #2e2f42;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: border-color;
+}
+
+.field-wrapper {
+  margin-bottom: 8px;
 }
 
 .textarea {
@@ -636,8 +640,9 @@ textarea:active {
 
 .modal-icons {
   position: absolute;
-  right: 90%;
-  transform: translateY(50%);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 16px;
   fill: #2e2f42;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -676,14 +681,16 @@ textarea:active {
   margin-bottom: 24px;
 }
 
-.legacy-checkbox:checked + .checkbox-label .custom-checkbox,
 .legacy-checkbox:focus + .checkbox-label .custom-checkbox {
-  background-color: #404bbf;
+  border-color: #4d5ae5;
 }
 
-.legacy-checkbox:checked + .checkbox-label .checked-icon,
-.legacy-checkbox:focus + .checkbox-label .checked-icon {
+.legacy-checkbox:checked + .checkbox-label .checked-icon {
   fill: #f4f4fd;
+}
+
+.legacy-checkbox:checked + .checkbox-label .custom-checkbox {
+  background-color: #404bbf;
 }
 
 .checkbox-link {
@@ -698,6 +705,7 @@ textarea:active {
 }
 
 .modal-btn {
+  max-width: 169px;
   color: #ffffff;
   background-color: #4d5ae5;
   font-size: 16px;
